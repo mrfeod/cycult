@@ -130,6 +130,7 @@ function showQuestion() {
 function nextQuestion() {
   setElementText('nextButton', proceed() ? 'Επόμενη' : 'Πάλι');
   toggleModifier('finishText', 'd-hide', proceed());
+  toggleModifier('questionText', 'd-hide', !proceed());
   if (proceed()) {
     currentQuestion++;
     updateScore();

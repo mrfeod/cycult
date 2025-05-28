@@ -14,9 +14,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 40vh;
-    min-height: 40vh;
-    max-height: 40vh;
+    height: 25vh;
+    min-height: 25vh;
+    max-height: 25vh;
     width: 100%;
 }
 
@@ -68,6 +68,8 @@ body {
 }
 
 #questionText {
+    position: absolute;
+    width: 100%;
     min-height: 6dvh;
     font-size: 1.5rem;
 }
@@ -101,12 +103,6 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    #signContainer {
-        height: 25vh;
-        min-height: 25vh;
-        max-height: 25vh;
-    }
-
     .sign-image {
         min-height: 25vmin;
         max-height: 25vh;
