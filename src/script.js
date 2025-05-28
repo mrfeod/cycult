@@ -66,14 +66,14 @@ function getRandomQuestion() {
 function assignAnswer(element, answer) {
   element.innerText = answer.answer;
   element.answer = answer.answer;
-  element.translation = answer.translation ? answer.translation : "не переведено";
+  element.translation = answer.translation ? answer.translation : undefined;
 }
 
 function showQuestion() {
   const question = getRandomQuestion();
   let questionText = document.getElementById('questionText');
   questionText.question = question.question;
-  questionText.translation = question.translation ? question.translation : "не переведено";
+  questionText.translation = question.translation ? question.translation : undefined;
   questionText.innerText = question.question;
 
   const mode = document.getElementById('mode').checked ? Mode.Test : Mode.Learn;
@@ -157,12 +157,12 @@ function updateTranslation() {
   let ru = document.getElementById('lang').checked;
   for (let i = 0; i < buttonsCount; i++) {
     let button = document.getElementById('answerButton' + i);
-    button.innerText = ru ? button.translation : button.answer;
+    button.innerText = ru && button.translation !== undefined ? button.translation : button.answer;
   }
   let questionText = document.getElementById('questionText');
-  questionText.innerText = ru ? questionText.translation : questionText.question;
+  questionText.innerText = ru && questionText.translation !== undefined ? questionText.translation : questionText.question;
   let answerText = document.getElementById('answerText');
-  answerText.innerText = ru ? answerText.translation : answerText.answer;
+  answerText.innerText = ru && answerText.translation !== undefined ? answerText.translation : answerText.answer;
 }
 
 setElementText('total', questions.length);
