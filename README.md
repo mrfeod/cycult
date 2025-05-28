@@ -25,8 +25,10 @@ Also check the same corner to switch language on a fly between Greek and Russian
 
 ## Technical details
 
+Based on my project [Cyprus Road Signs](https://github.com/mrfeod/cysigns/).
+
 ### The Data
-Data scrapping utility provided here: [utils/parse_data.py](utils/parse_data.py)
+Data conversion utility provided here: [utils/parse_data.py](utils/parse_data.py)
 
 **The data has minor inaccuracies and I hope you provide a PR to fix them.**
 
