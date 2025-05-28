@@ -48,14 +48,14 @@ function updateScore() {
 }
 
 function proceed() {
-  return currentQuestion < signs.length;
+  return currentQuestion < questions.length;
 }
 
 function getRandomQuestion() {
-  let availableQuestions = signs.filter(question => !question.used);
+  let availableQuestions = questions.filter(question => !question.used);
   if (availableQuestions.length === 0) {
-    signs.forEach(question => question.used = false);
-    availableQuestions = signs;
+    questions.forEach(question => question.used = false);
+    availableQuestions = questions;
   }
   let randomIndex = Math.floor(Math.random() * availableQuestions.length);
   let question = availableQuestions[randomIndex];
@@ -63,22 +63,18 @@ function getRandomQuestion() {
   return question;
 }
 
-function getRandomAnswers(count) {
-  let answers = [...signs];
-  answers.sort(() => Math.random() - 0.5);
-  return answers.slice(0, count);
-}
-
 function assignAnswer(element, answer) {
-  element.innerText = answer.name;
-  element.name = answer.name;
-  element.ru = answer.ru;
+  element.innerText = answer.answer;
+  element.answer = answer.answer;
+  element.translation = answer.translation ? answer.translation : "не переведено";
 }
 
 function showQuestion() {
   const question = getRandomQuestion();
-  let image = document.getElementById('signImage');
-  image.src = question.image;
+  let questionText = document.getElementById('questionText');
+  questionText.question = question.question;
+  questionText.translation = question.translation ? question.translation : "не переведено";
+  questionText.innerText = question.question;
 
   const mode = document.getElementById('mode').checked ? Mode.Test : Mode.Learn;
   toggleModifier('score', 'd-hide', mode === Mode.Test);
@@ -89,19 +85,24 @@ function showQuestion() {
 
   if (mode === Mode.Test) {
     toggleModifier('answerText', 'd-invisible', true);
-    assignAnswer(document.getElementById('answerText'), question);
+    assignAnswer(document.getElementById('answerText'), question.answers.find(a => a.correct));
   } else if (mode === Mode.Learn) {
-    let answers = getRandomAnswers(buttonsCount);
-    if (!answers.find(answer => answer.name === question.name)) {
-      answers[0] = question;
+    answers = question.answers;
+    if (answers.size > 2) {
       answers.sort(() => Math.random() - 0.5);
     }
 
-    const answerIndex = answers.findIndex(a => a.name === question.name);
+    const answerIndex = answers.findIndex(a => a.correct);
     for (let i = 0; i < buttonsCount; i++) {
+      if (i >= answers.length) {
+        toggleModifier('answerButton' + i, 'd-hide', true);
+        continue;
+      }
+      toggleModifier('answerButton' + i, 'd-hide', false);
+
       let button = document.getElementById('answerButton' + i);
       assignAnswer(button, answers[i]);
-      button.onclick = function() {
+      button.onclick = function () {
         disableAnswerButtons();
         let theAnswer = document.getElementById('answerButton' + answerIndex);
         theAnswer.classList.add('btn-success');
@@ -127,7 +128,7 @@ function showQuestion() {
 }
 
 function nextQuestion() {
-  setElementText('nextButton', proceed() ? 'Next' : 'Restart');
+  setElementText('nextButton', proceed() ? 'Επόμενη' : 'Πάλι');
   toggleModifier('finishText', 'd-hide', proceed());
   if (proceed()) {
     currentQuestion++;
@@ -144,7 +145,7 @@ function resetState() {
   currentQuestion = 0;
   correctCount = 0;
   incorrectCount = 0;
-  signs.forEach(question => question.used = false);
+  questions.forEach(question => question.used = false);
 }
 
 function switchMode() {
@@ -156,23 +157,13 @@ function updateTranslation() {
   let ru = document.getElementById('lang').checked;
   for (let i = 0; i < buttonsCount; i++) {
     let button = document.getElementById('answerButton' + i);
-    button.innerText = ru ? button.ru : button.name;
+    button.innerText = ru ? button.translation : button.answer;
   }
+  let questionText = document.getElementById('questionText');
+  questionText.innerText = ru ? questionText.translation : questionText.question;
   let answerText = document.getElementById('answerText');
-  answerText.innerText = ru ? answerText.ru : answerText.name;
+  answerText.innerText = ru ? answerText.translation : answerText.answer;
 }
 
-function preloadImages() {
-  toggleModifier('signContainer', 'loading', true);
-  window.onload = function() {
-    toggleModifier('signContainer', 'loading', false);
-  };
-  for (let i = 0; i < signs.length; i++) {
-    let image = new Image();
-    image.src = signs[i].image;
-  }
-}
-
-setElementText('total', signs.length);
-preloadImages();
+setElementText('total', questions.length);
 nextQuestion();

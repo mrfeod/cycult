@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Cyprus Road Signs Test</title>
+    <title>Cyprus Culture Test</title>
     <link rel="me" href="https://github.com/mrfeod/cysigns/">
     <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
@@ -30,12 +30,8 @@
             <label id="score">🟢<span id="correct">0</span> 🔴<span id="incorrect">0</span></label>
         </div>
         <div class="spacer"></div>
-        <figure id="signContainer" class="figure loading-lg">
-            <div class="spacerW"></div>
-            <img id="signImage" class="sign-image">
-            <div class="spacerW"></div>
-            <div id="finishText" class="text-center">Test finished🎉</div>
-        </figure>
+        <div id="questionText" class="text-center">Question placeholder</div>
+        <div id="finishText" class="text-center">Test finished🎉</div>
         <div id="answers" class="button-grid">
             <button id="answerButton0" class="btn"></button>
             <button id="answerButton1" class="btn"></button>
@@ -45,16 +41,15 @@
         <div id="answerText" class="text-center"></div>
         <div class="spacer"></div>
         <div class="button-line">
-            <button id="showAnswerButton" class="btn btn-primary" onclick="showAnswer()">Show answer</button>
-            <button id="nextButton" class="btn btn-primary" onclick="nextQuestion()">Next</button>
+            <button id="showAnswerButton" class="btn btn-primary" onclick="showAnswer()">Απάντηση</button>
+            <button id="nextButton" class="btn btn-primary" onclick="nextQuestion()">Επόμενη</button>
         </div>
         <div id="footerText" class="text-center">
-            <a href="#wikipedia" onClick="window.open('https://en.wikipedia.org/wiki/Road_signs_in_Cyprus')">Based
-                on💡</a> <a href="#github" onClick="window.open('https://github.com/mrfeod/cysigns/')">Code⚙️</a> <a
-                href="#donate" onClick="window.open('https://buy.stripe.com/8wMaIJaN68zif5K3cc')">«Thank you»💸</a>
+            <a href="#github" onClick="window.open('https://github.com/mrfeod/cysigns/')">Code⚙️</a> <a href="#donate"
+                onClick="window.open('https://buy.stripe.com/8wMaIJaN68zif5K3cc')">«Thank you»💸</a>
         </div>
     </div>
-    <script src="src/signs.js"></script>
+    <script src="src/questions.js"></script>
     <script src="src/script.js"></script>
 </body>
 

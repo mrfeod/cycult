@@ -68,9 +68,15 @@ body {
     width: 100%;
 }
 
-#answerText, #finishText {
+#questionText {
     min-height: 6dvh;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+}
+
+#answerText,
+#finishText {
+    min-height: 6dvh;
+    font-size: 1.5rem;
 }
 
 #finishText {
