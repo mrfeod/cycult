@@ -20,14 +20,6 @@ body {
     width: 100%;
 }
 
-.sign-image {
-    width: auto;
-    height: 40vmin;
-    min-height: 40vmin;
-    max-height: 40vh;
-    max-width: 100%;
-}
-
 .button-grid {
     flex: 25;
     display: grid;
@@ -64,20 +56,23 @@ body {
 }
 
 .spacerW {
-    width: 100%;
+    width: 5%;
 }
 
 #questionText {
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: center;
     width: 100%;
     min-height: 6dvh;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 #answerText,
 #finishText {
     min-height: 6dvh;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 #finishText {
@@ -103,9 +98,8 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    .sign-image {
-        min-height: 25vmin;
-        max-height: 25vh;
+    #questionText {
+        font-size: 0.8rem;
     }
 
     .button-grid {

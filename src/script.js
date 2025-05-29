@@ -150,8 +150,25 @@ function resetState() {
 }
 
 function switchMode() {
-  resetState();
-  nextQuestion();
+  const submitModeSwitch = document.getElementById('submitModeSwitch');
+  const cancelModeSwitch = document.getElementById('cancelModeSwitch');
+  const dialog = document.getElementById('modeSwitchDialog');
+
+  let modeCheckBox = document.getElementById('mode');
+  const mode = modeCheckBox.checked ? Mode.Test : Mode.Learn;
+
+  cancelModeSwitch.addEventListener('click', () => {
+    dialog.close();
+    modeCheckBox.checked = mode === Mode.Learn;
+  });
+
+  submitModeSwitch.addEventListener('click', () => {
+    resetState();
+    nextQuestion();
+  });
+
+  dialog.showModal();
+  cancelModeSwitch.focus();
 }
 
 function updateTranslation() {

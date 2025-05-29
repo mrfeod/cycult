@@ -25,14 +25,27 @@
             <i class="form-icon"></i>🌏
         </label>
     </div>
+    <dialog id="modeSwitchDialog">
+        <form method="dialog">
+            <p>
+                <label>Сбросить прогресс и сменить режим теста?</label>
+            </p>
+            <div class="button-line">
+                <button id="submitModeSwitch" type="submit" class="btn">Да</button>
+                <button id="cancelModeSwitch" type="reset" class="btn">Нет</button>
+            </div>
+        </form>
+    </dialog>
     <div class="container">
         <div class="text-center">❓<span id="question">0</span> of <span id="total">0</span>
             <label id="score">🟢<span id="correct">0</span> 🔴<span id="incorrect">0</span></label>
         </div>
         <div class="spacer"></div>
         <figure id="signContainer" class="figure loading-lg">
+            <div class="spacerW"></div>
             <div id="questionText" class="text-center">Question placeholder</div>
-            <div id="finishText" class="text-center">Test finished🎉</div>
+            <div class="spacerW"></div>
+            <div id="finishText" class="text-center">Το τεστ ολοκληρώθηκε🎉</div>
         </figure>
         <div id="answers" class="button-grid">
             <button id="answerButton0" class="btn"></button>
