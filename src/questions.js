@@ -1072,12 +1072,12 @@ const questions = [
     "answers": [
       {
         "answer": "Κουμανδαρία",
-        "correct": false,
+        "correct": true,
         "translation": "Командария"
       },
       {
         "answer": "Μαυρούδι",
-        "correct": true,
+        "correct": false,
         "translation": "Мавруди"
       },
       {
@@ -6237,7 +6237,7 @@ const questions = [
         "translation": "1 октября 1960"
       },
       {
-        "answer": "20η Ιουλίου 1974,  Γ) 1η Απριλίου 195",
+        "answer": "20η Ιουλίου 1974",
         "correct": true,
         "translation": "20 июля 1974"
       },
