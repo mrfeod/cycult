@@ -3756,7 +3756,7 @@ const questions = [
       {
         "answer": "Δεκαπενταύγουστο",
         "correct": true,
-        "translation": "Успение"
+        "translation": "Успение (15 августа)"
       },
       {
         "answer": "Πάσχα",
